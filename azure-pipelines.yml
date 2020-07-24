@@ -1,4 +1,42 @@
+Last login: Fri Jul 24 09:25:56 on ttys001
+❯ cd git
+❯ ls
+mslearn-tailspin-spacegame-web
+❯ cd mslearn-tailspin-spacegame-web
+❯ git checkout master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+❯ clear
+❯ git pull origin master
+From github.com:RakaPKS/mslearn-tailspin-spacegame-web
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+❯ clear
 # ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+"azure-pipelines.yml" 34L, 985C# ASP.NET Core (.NET Framework)
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
